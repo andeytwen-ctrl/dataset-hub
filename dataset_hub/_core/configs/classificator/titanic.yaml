@@ -10,7 +10,7 @@ sources:
       source_info:
         url: https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/stuff/titanic.csv
 
-source_preprocess: null
+source_transform: null
 
 tables:
   - name: titanic
