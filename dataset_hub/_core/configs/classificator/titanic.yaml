@@ -1,12 +1,20 @@
 dataset_name: Titanic
 
-tables:
-  - name: passengers
-    source:
-      source_type: url  
+sources:
+  - name: titanic.csv
+    source_type: url
+    source_info:
+      url: https://calmcode.io/static/data/titanic.csv
+    mirror:
+      source_type: url
       source_info:
         url: https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/stuff/titanic.csv
-    mirror:
-      source_type: url  
-      source_info:
-        url: https://calmcode.io/static/data/titanic.csv
+
+source_preprocess: null
+
+tables:
+  - name: titanic
+    file: titanic.csv
+    format: csv
+    read_params:
+      sep: ","
