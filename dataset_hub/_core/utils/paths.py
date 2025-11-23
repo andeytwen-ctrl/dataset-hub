@@ -24,3 +24,8 @@ def build_datafile_path(dataset_name: str, filename: str) -> Path:
     path.mkdir(parents=True, exist_ok=True)
     
     return path / filename
+
+
+def list_available_datasets(task_type: str) -> list[str]:
+    task_configs_path = Path(__file__).parent.parent.parent / task_type / "_configs"
+    return [p.stem for p in task_configs_path.glob("*.yaml")]
