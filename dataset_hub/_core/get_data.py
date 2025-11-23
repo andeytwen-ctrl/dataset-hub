@@ -5,7 +5,7 @@ from dataset_hub._core.sources.transform import transform_raw
 from dataset_hub._core.sources.download import download_raw
 from dataset_hub._core.tables.load import load_table
 from dataset_hub._core.tables.transform import transform_table
-from dataset_hub._core.common.logger import get_logger
+from dataset_hub._core.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -32,8 +32,7 @@ def get_data(dataset_name: str = 'titanic', task_type: str = 'classification') -
 
 
 def get_source(config: Dict[str, Any]):
-    for source_config in config["sources"]:
-        download_raw(source_config)
+    download_raw(config)
     
     for transform_config in config["source_transform"]:
         transform_raw(transform_config)

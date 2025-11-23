@@ -1,7 +1,7 @@
 import yaml
 from typing import Dict, Any
 from pathlib import Path
-from dataset_hub._core.common.logger import get_logger
+from dataset_hub._core.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
