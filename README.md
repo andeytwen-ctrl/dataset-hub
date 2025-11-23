@@ -6,7 +6,7 @@
 import dataset_hub
 
 dataset = dataset_hub.classification.get_data('titanic')
-titanic = dataset['titanic']
+titanic = dataset['data']
 print(type(titanic)) # pandas.DataFrame
 ```
 It lets beginners access datasets effortlessly, while giving practitioners a single interface to experiment with any open dataset or ML task.
