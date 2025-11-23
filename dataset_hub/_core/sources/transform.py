@@ -1,5 +1,4 @@
 from pathlib import Path
-from .download import _download_raw
 
 # --- простые трансформации ---
 def unzip(params):
