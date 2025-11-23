@@ -12,14 +12,15 @@ from dataset_hub._core.registry.config import Config
 
 logger = get_logger(__name__)
 
+
 def get_data(dataset_name: str, task_type: str) -> Dataset:
     """
     Core for main public API function
-    
+
     Параметры:
         dataset_name: str — название датасета
         task_type: str — опционально, тип задачи
-    
+
     Возвращает:
         dict {table_name: pd.DataFrame}
     """
@@ -29,15 +30,18 @@ def get_data(dataset_name: str, task_type: str) -> Dataset:
 
     return tables
 
+
 def get_config(dataset_name: str, task_type: str) -> Config:
     config = load_config(dataset_name, task_type)
     config = transform_config(config)
-    
+
     return config
+
 
 def get_source(config: Config) -> None:
     download_raw(config)
     transform_raw(config)
+
 
 def get_tables(config: Config) -> Dataset:
     tables = {}

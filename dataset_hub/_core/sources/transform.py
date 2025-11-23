@@ -1,8 +1,8 @@
 from dataset_hub._core.registry.config import Config
 
 # --- registry ---
-TRANSFORM_REGISTRY = {
-}
+TRANSFORM_REGISTRY = {}
+
 
 def transform_raw(config: Config) -> None:
     for transform_config in config["source_transform"]:

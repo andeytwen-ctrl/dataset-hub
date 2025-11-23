@@ -11,19 +11,19 @@ def download_raw(config: Config) -> None:
     """
     for source_config in config["sources"]:
         source_path = build_datafile_path(
-            dataset_name=config["dataset_name"],
-            filename=source_config["file"]
+            dataset_name=config["dataset_name"], filename=source_config["file"]
         )
 
         if source_path.exists():
             continue  # skip existing files
-        
+
         source_type = source_config["source_type"]
         if source_type not in DOWNLOAD_REGISTRY:
             raise ValueError(f"Unknown source type {source_type}")
-        
+
         download_source = DOWNLOAD_REGISTRY[source_type]
         download_source(source_config, source_path)
+
 
 # --- "url" source type ---
 def download_url(source_config: Config, save_path: Path) -> None:
@@ -33,8 +33,6 @@ def download_url(source_config: Config, save_path: Path) -> None:
     url = source_config["source_info"]["url"]
     url2file(url, save_path)
 
-# --- registry of download types ---
-DOWNLOAD_REGISTRY = {
-    "url": download_url
-}
 
+# --- registry of download types ---
+DOWNLOAD_REGISTRY = {"url": download_url}

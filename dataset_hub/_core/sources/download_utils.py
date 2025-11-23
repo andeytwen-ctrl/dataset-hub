@@ -1,6 +1,7 @@
 from pathlib import Path
 import requests
 
+
 def url2file(url: str, save_path: Path) -> None:
     """
     Load file using HTTP/HTTPS URL.
