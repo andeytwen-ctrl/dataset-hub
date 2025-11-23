@@ -1,14 +1,10 @@
-dataset_name: Titanic
+dataset_name: titanic
 
 sources:
   - name: titanic.csv
     source_type: url
     source_info:
       url: https://calmcode.io/static/data/titanic.csv
-    mirror:
-      source_type: url
-      source_info:
-        url: https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/stuff/titanic.csv
 
 source_transform: null
 
