@@ -38,7 +38,7 @@ def get_source(config: Dict[str, Any]):
     for transform_config in config["source_transform"]:
         transform_raw(transform_config)
 
-def get_tables(config: Dict[str, Any]):
+def get_tables(config: Dict[str, Any]) -> Dict[str, Any]:
     tables = {}
     for table_config in config['tables']:
         table = load_table(table_config["file"], table_config["read_params"])
