@@ -1,0 +1,60 @@
+[project]
+name = "dataset_hub"
+version = "0.1.0"
+description = "A unified API for exploring any ML task"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Slava Bakulin" }
+]
+
+dependencies = [
+    "pandas==2.3.3",
+    "requests==2.32.5",
+    "pyyaml==6.0.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "ruff",
+    "mypy",
+]
+
+# -----------------------------
+# Formatting: Black
+# -----------------------------
+[tool.black]
+line-length = 88
+target-version = ["py310", "py311", "py312"]
+
+# -----------------------------
+# Linting: Ruff
+# -----------------------------
+[tool.ruff]
+line-length = 88
+fix = true
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # import sorting
+    "B",   # bugbear
+]
+
+# Исключения (если например временно нужно убрать проверки):
+# ignore = ["E501"]
+
+# -----------------------------
+# Type Checking: Mypy
+# -----------------------------
+[tool.mypy]
+python_version = "3.10"
+strict = false
+warn_unused_configs = true
+warn_return_any = true
+warn_unused_ignores = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+# Чтобы mypy понимал pandas 2.x
+plugins = []
