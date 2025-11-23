@@ -1,7 +1,7 @@
 from typing import Dict, Any
 from pathlib import Path
 from dataset_hub._core.sources.download_utils import url2file
-from dataset_hub._core.utils.paths import build_source_path
+from dataset_hub._core.utils.paths import build_datafile_path
 
 # --- main download interface ---
 def download_raw(config: Dict[str, Any]) -> None:
@@ -9,9 +9,9 @@ def download_raw(config: Dict[str, Any]) -> None:
     Load files from sources using registry
     """
     for source_config in config["sources"]:
-        source_path = build_source_path(
+        source_path = build_datafile_path(
             dataset_name=config["dataset_name"],
-            filename=source_config["name"]
+            filename=source_config["file"]
         )
 
         if source_path.exists():

@@ -1,7 +1,7 @@
 from pathlib import Path
 from dataset_hub._settings.loader import load_settings
 
-def build_source_path(dataset_name: str, filename: str) -> Path:
+def build_datafile_path(dataset_name: str, filename: str) -> Path:
     """
     Собирает путь к файлу датасета и создаёт необходимые директории.
     
