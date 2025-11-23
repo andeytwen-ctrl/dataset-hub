@@ -43,7 +43,7 @@ pip install dataset_hub
 dataset-hub.docs.com
 
 ## Why this library exists
-DatasetHub was created to provide a single, unified entry point for experimenting with any classic ML task — from classification, scoring, and forecasting to pricing, fraud detection, and uplift modeling.
+DatasetHub was created to provide a single, unified entry point for experimenting with any classic ML task — from scoring and forecasting to fraud detection and uplift modeling.
 
 Looking ahead, the project focuses on two major directions:
 
