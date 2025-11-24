@@ -6,10 +6,13 @@ READERS: Dict[str, Callable] = {
     "csv": pd.read_csv,
     "parquet": pd.read_parquet,
     "excel": pd.read_excel,
-    "json": pd.read_json
+    "json": pd.read_json,
 }
 
-def read_dataframe(path_or_url: str, format: str, read_kwargs: Dict[str, Any] = None) -> pd.DataFrame:
+
+def read_dataframe(
+    path_or_url: str, format: str, read_kwargs: Dict[str, Any] = None
+) -> pd.DataFrame:
     """
     Universal function to read a DataFrame from various file formats.
 
@@ -29,7 +32,9 @@ def read_dataframe(path_or_url: str, format: str, read_kwargs: Dict[str, Any] = 
 
     format = format.lower()
     if format not in READERS:
-        raise ValueError(f"Format '{format}' is not supported. Supported formats: {list(READERS.keys())}")
+        raise ValueError(
+            f"Format '{format}' is not supported. Supported formats: {list(READERS.keys())}"
+        )
 
     reader = READERS[format]
     return reader(path_or_url, **read_kwargs)

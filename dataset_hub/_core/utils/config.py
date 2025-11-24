@@ -2,6 +2,7 @@ from typing import Dict, Any
 from pathlib import Path
 import yaml
 
+
 class ConfigFactory:
     """
     Factory to load and build dataset configurations.
@@ -59,7 +60,9 @@ class ConfigFactory:
             FileNotFoundError: If the YAML file does not exist.
         """
         if not config_path.exists():
-            raise FileNotFoundError(f"Dataset config not found: {config_path.parts[-3:]}")
+            raise FileNotFoundError(
+                f"Dataset config not found: {config_path.parts[-3:]}"
+            )
         with open(config_path) as f:
             dataset_config = yaml.safe_load(f)
         return dataset_config

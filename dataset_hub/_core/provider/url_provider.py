@@ -17,6 +17,7 @@ class UrlProviderConfig(ProviderConfig):
         format (str): The format of the file (e.g., 'csv', 'parquet').
         read_kwargs (Dict[str, Any]): Optional keyword arguments to pass to the pandas read function.
     """
+
     url: str
     format: str
     read_kwargs: Dict[str, Any] = field(default_factory=dict)
@@ -46,7 +47,6 @@ class UrlProvider(Provider):
         dataset["data"] = data
 
         return dataset
-
 
     def _prepare_config(self, config: Dict[str, Any]) -> Dict[str, Any]:
         """

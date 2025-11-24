@@ -11,9 +11,7 @@ class ProviderFactory:
     """
 
     # Registry mapping type string -> Provider class
-    _registry: Dict[str, Type[Provider]] = {
-        "url": UrlProvider
-    }
+    _registry: Dict[str, Type[Provider]] = {"url": UrlProvider}
 
     @classmethod
     def build_provider(cls, provider_config: Dict[str, Any]) -> Provider:

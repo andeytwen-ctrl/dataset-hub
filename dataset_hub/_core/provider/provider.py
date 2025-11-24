@@ -10,7 +10,9 @@ class ProviderConfig:
 
     Concrete provider configs should inherit from this class.
     """
+
     pass
+
 
 class Provider(ABC):
     """
