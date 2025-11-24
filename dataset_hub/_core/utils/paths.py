@@ -4,20 +4,15 @@ from dataset_hub._settings.loader import load_settings
 
 def build_datafile_path(dataset_name: str, filename: str) -> Path:
     """
-    Собирает путь к файлу датасета и создаёт необходимые директории.
+    Construct the full path to a dataset file and create necessary directories.
 
-    Параметры:
-    - base_dir: базовая директория для всех датасетов
-    - dataset_name: название датасета (например, 'titanic')
-    - table_name: название таблицы или поддиректории
-    - filename: имя файла, если None, берётся table_name
+    Args:
+        dataset_name (str): The name of the dataset (e.g., 'titanic').
+        filename (str): The name of the file. Must be provided.
 
-    Возвращает:
-    - Полный Path к файлу
+    Returns:
+        Path: The full path to the dataset file.
     """
-    if filename is None:
-        filename = table_name
-
     settings = load_settings()
     data_path = settings["data_path"]
 
@@ -28,5 +23,14 @@ def build_datafile_path(dataset_name: str, filename: str) -> Path:
 
 
 def list_available_datasets(task_type: str) -> list[str]:
+    """
+    List all available dataset names for a given task type.
+
+    Args:
+        task_type (str): The type of task (used to locate the exists configs).
+
+    Returns:
+        List[str]: A list of dataset names (without file extensions).
+    """
     task_configs_path = Path(__file__).parent.parent.parent / task_type / "_configs"
     return [p.stem for p in task_configs_path.glob("*.yaml")]
