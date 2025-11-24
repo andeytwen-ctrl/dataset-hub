@@ -8,9 +8,9 @@ def get_data(dataset_name: str, task_type: str) -> Dict[str, Any]:
     Load a dataset and return it as a dictionary of tables (usually DataFrames).
 
     This is the main public API function of the library. It:
-        1. Loads the dataset configuration.
-        2. Instantiates the data provider.
-        3. Loads the dataset using the data provider.
+        1. Loads the dataset configuration using ConfigFactory.
+        2. Instantiates the appropriate Provider via ProviderFactory.
+        3. Loads the dataset using the provider.
 
     Args:
         dataset_name (str): The name of the dataset (corresponding to the YAML config file).
