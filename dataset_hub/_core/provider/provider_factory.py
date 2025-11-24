@@ -20,7 +20,8 @@ class ProviderFactory:
         Build a Provider instance from a configuration dictionary.
 
         Args:
-            provider_config (Dict[str, Any]): The configuration dict with at least a 'type' and 'params' keys.
+            provider_config (Dict[str, Any]): The configuration dict with at least
+                a 'type' and 'params' keys.
 
         Returns:
             Provider: An instance of the appropriate Provider subclass.

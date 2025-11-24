@@ -17,7 +17,8 @@ class UrlProviderConfig(ProviderConfig):
     Attributes:
         url (str): The URL from which to load the dataset.
         format (str): The format of the file (e.g., 'csv', 'parquet').
-        read_kwargs (Dict[str, Any]): Optional keyword arguments to pass to the pandas read function.
+        read_kwargs (Dict[str, Any]): Optional keyword arguments to pass
+            to the pandas read function.
     """
 
     url: str
@@ -63,5 +64,5 @@ class UrlProvider(Provider):
         try:
             config = asdict(UrlProviderConfig(**config))
         except TypeError as e:
-            raise ValueError(f"Invalid UrlProvider config: {e}")
+            raise ValueError(f"Invalid UrlProvider config: {e}") from e
         return config

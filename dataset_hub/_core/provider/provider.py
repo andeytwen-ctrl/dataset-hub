@@ -22,7 +22,8 @@ class Provider(ABC):
     be a URL, a local file, a sklearn dataset, or any other supported source.
 
     Attributes:
-        config (Dict[str, Any]): The provider's configuration loaded from the dataset YAML file.
+        config (Dict[str, Any]): The provider's configuration loaded from
+            the dataset YAML file.
     """
 
     def __init__(self, config: Dict[str, Any]) -> None:

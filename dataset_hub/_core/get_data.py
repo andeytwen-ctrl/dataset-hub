@@ -14,7 +14,8 @@ def get_data(dataset_name: str, task_type: str) -> Dict[str, Any]:
         3. Loads the dataset using the provider.
 
     Args:
-        dataset_name (str): The name of the dataset (corresponding to the YAML config file).
+        dataset_name (str): The name of the dataset (corresponding to the
+            YAML config file).
         task_type (str): The type of task (e.g., "classification", "regression").
 
     Returns:

@@ -20,7 +20,8 @@ def read_dataframe(
     Args:
         path_or_url (str): Local file path or URL to the data.
         format (str): Data format ('csv', 'parquet', 'excel', 'json').
-        read_kwargs (dict, optional): Additional parameters to pass to the corresponding pandas reader function.
+        read_kwargs (dict, optional): Additional parameters to pass to
+            the corresponding pandas reader function.
 
     Returns:
         pd.DataFrame: Loaded DataFrame.
@@ -34,7 +35,8 @@ def read_dataframe(
     format = format.lower()
     if format not in READERS:
         raise ValueError(
-            f"Format '{format}' is not supported. Supported formats: {list(READERS.keys())}"
+            "Format '{fmt}' is not supported. "
+            f"Supported formats: {list(READERS.keys())}".format(fmt=format)
         )
 
     reader = READERS[format]
