@@ -65,5 +65,5 @@ class ConfigFactory:
                 f"Dataset config not found: {config_path.parts[-3:]}"
             )
         with open(config_path) as f:
-            dataset_config = yaml.safe_load(f)
+            dataset_config: Dict[str, Any] = yaml.safe_load(f)
         return dataset_config

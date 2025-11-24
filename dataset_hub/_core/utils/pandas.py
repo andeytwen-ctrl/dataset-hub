@@ -12,7 +12,7 @@ READERS: Dict[str, Callable] = {
 
 
 def read_dataframe(
-    path_or_url: str, format: str, read_kwargs: Dict[str, Any] = None
+    path_or_url: str, format: str, read_kwargs: Dict[str, Any]
 ) -> pd.DataFrame:
     """
     Universal function to read a DataFrame from various file formats.
@@ -39,5 +39,7 @@ def read_dataframe(
             f"Supported formats: {list(READERS.keys())}".format(fmt=format)
         )
 
-    reader = READERS[format]
+    # All reader functions in READERS return a pandas DataFrame,
+    # so we explicitly type the selected reader as Callable[..., DataFrame]
+    reader: Callable[..., pd.DataFrame] = READERS[format]
     return reader(path_or_url, **read_kwargs)
