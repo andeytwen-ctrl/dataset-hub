@@ -32,7 +32,7 @@ preds = model.predict(X_test)
 
 You can take any task from DatasetHub and start exploring or modeling immediately, whether it’s classification, regression, or uplift modeling.
 
-## Installation
+## Installation (NOT AVAILABLE NOW)
 ```bash
 # Python 3.8+
 pip install dataset_hub
