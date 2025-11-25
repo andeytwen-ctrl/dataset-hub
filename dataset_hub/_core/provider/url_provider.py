@@ -1,5 +1,7 @@
-from dataclasses import asdict, dataclass, field
+from dataclasses import dataclass, field
 from typing import Any, Dict
+
+import pandas as pd
 
 from dataset_hub._core.utils.pandas import read_dataframe
 
@@ -12,13 +14,13 @@ from .provider import (
 @dataclass
 class UrlProviderConfig(ProviderConfig):
     """
-    Configuration for UrlProvider.
+    Configuration schema for `UrlProvider`.
 
     Attributes:
-        url (str): The URL from which to load the dataset.
+        url (str): HTTP(S) URL pointing to the dataset file.
         format (str): The format of the file (e.g., 'csv', 'parquet').
-        read_kwargs (Dict[str, Any]): Optional keyword arguments to pass
-            to the pandas read function.
+        read_kwargs (Dict[str, Any]): Optional keyword arguments forwarded
+            directly to the corresponding pandas reader.
     """
 
     url: str
@@ -28,41 +30,31 @@ class UrlProviderConfig(ProviderConfig):
 
 class UrlProvider(Provider):
     """
-    Provider that loads a dataset from a URL and returns a pandas DataFrame.
+    Provider that loads a dataset from a remote URL and returns it as 
+    a pandas DataFrame.
 
-    This provider always returns a DataFrame regardless of file format.
+    Regardless of the underlying file format, the output is always returned as:
+
+        {"data": pandas.DataFrame}
+
+    Supported formats depend on the implementation of `read_dataframe`.
     """
 
-    def load(self) -> Dict[str, Any]:
+    ConfigClass = UrlProviderConfig
+
+    def load(self) -> Dict[str, pd.DataFrame]:
         """
-        Load the dataset from the configured URL and return it as a DataFrame.
+        Fetch and load the dataset specified in the configuration.
 
         Returns:
-            Dict[str, Any]: The loaded dataset object, wrapping a pandas DataFrame.
+            Dict[str, pd.DataFrame]: A dictionary containing a single key `"data"`
+            whose value is the loaded pandas DataFrame.
+
+        Raises:
+            ValueError: If the file cannot be read or the format is unsupported.
         """
-        url = self.config["url"]
-        file_format = self.config["format"]
-        read_kwargs = self.config["read_kwargs"]
+        data = read_dataframe(
+            self.config["url"], self.config["format"], self.config["read_kwargs"]
+        )
 
-        data = read_dataframe(url, file_format, read_kwargs)
-
-        dataset = {}
-        dataset["data"] = data
-
-        return dataset
-
-    def _prepare_config(self, config: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Validate and normalize the configuration dictionary using config dataclass.
-
-        Args:
-            config (Dict[str, Any]): The raw configuration dictionary.
-
-        Returns:
-            Dict[str, Any]: The validated and normalized configuration.
-        """
-        try:
-            config = asdict(UrlProviderConfig(**config))
-        except TypeError as e:
-            raise ValueError(f"Invalid UrlProvider config: {e}") from e
-        return config
+        return {"data": data}
