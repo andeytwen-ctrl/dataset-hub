@@ -12,3 +12,4 @@ This page documents the datasets available in the classification task.
    :maxdepth: 3
 
    ./titanic
+   ./iris

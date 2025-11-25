@@ -28,7 +28,7 @@ html_css_files = [
     "css/custom.css",
 ]
 
-html_favicon = '_static/favicon.png'
+html_favicon = "_static/favicon.png"
 
 # Настройки автодокументации
 autodoc_member_order = "bysource"

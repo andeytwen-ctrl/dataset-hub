@@ -33,20 +33,20 @@ def get_titanic(**params) -> pd.DataFrame:
     passengers aboard the Titanic, including demographic and ticket-related features
     and survival outcome.
 
-    Major columns:
+    Columns:
 
     - ``survived`` (int): target variable, 1 if survived, 0 otherwise
     - ``pclass`` (int): passenger class (1 = 1st, 2 = 2nd, 3 = 3rd)
+    - ``name`` (str): full name of the passenger
     - ``sex`` (str): passenger gender
     - ``age`` (float): passenger age in years
+    - ``fare`` (float): ticket fare
     - ``sibsp`` (int): number of siblings/spouses aboard
     - ``parch`` (int): number of parents/children aboard
-    - ``fare`` (float): ticket fare
-    - ``embarked`` (str): port of embarkation (C = Cherbourg, Q = Queenstown
-        , S = Southampton)
 
     Args:
-        **params: Additional parameters passed to the underlying data loader.
+        **params: Additional parameters passed to the underlying data loader
+            (see :ref:`get_data` for details).
 
     Returns:
         pandas.DataFrame: The Titanic dataset with all features including the target.
@@ -65,3 +65,41 @@ def get_titanic(**params) -> pd.DataFrame:
         y = titanic['survived']
     """
     return _get_data("titanic", **params)  # type: ignore[return-value]
+
+def get_iris(**params) -> pd.DataFrame:
+    """
+    Load and return the Iris dataset (classification).
+
+    A classic multiclass classification dataset containing measurements
+    of iris flowers from three different species.
+
+    Columns:
+
+    - ``sepal_length`` (float): length of the sepal in cm
+    - ``sepal_width`` (float): width of the sepal in cm
+    - ``petal_length`` (float): length of the petal in cm
+    - ``petal_width`` (float): width of the petal in cm
+    - ``species`` (str): target variable, species name (setosa, versicolor, virginica)
+
+    Args:
+        **params: Additional parameters passed to the underlying data loader
+            (see :ref:`get_data` for details).
+
+    Returns:
+        pandas.DataFrame: The Iris dataset with all features including the target.
+
+        - The DataFrame contains the columns listed above.
+        - The target column is ``species``.
+        - All other columns can be used as features for classification tasks.
+
+    Example::
+
+        from dataset_hub.classification import get_iris
+
+        iris = get_iris()
+        print(iris.head())
+        X = iris.drop(columns=['species'])
+        y = iris['species']
+    """
+
+    return _get_data("iris", **params)  # type: ignore[return-value]
