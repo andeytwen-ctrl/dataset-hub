@@ -10,7 +10,8 @@ def get_data(
     dataset_name: str, task_type: str, verbose: Optional[bool] = None
 ) -> Union[Any, Dict[str, Any]]:
     """
-    Core backend function used by all `.get_<dataset_name>()` functions to load datasets.
+    Core backend function used by all `.get_<dataset_name>()` functions to load \
+        datasets.
 
     This function:
         1. Loads the dataset configuration using ConfigFactory.
