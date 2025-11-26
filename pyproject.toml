@@ -24,7 +24,8 @@ dev = [
     "sphinx==5.1.1",
     "sphinx-rtd-theme==1.0.0",
     "myst-parser",
-    "sphinxcontrib-bibtex"
+    "sphinxcontrib-bibtex",
+    "pytest"
 ]
 
 # -----------------------------
@@ -47,9 +48,6 @@ select = [
     "B",   # bugbear
 ]
 
-# Исключения (если например временно нужно убрать проверки):
-# ignore = ["E501"]
-
 # -----------------------------
 # Type Checking: Mypy
 # -----------------------------
@@ -63,5 +61,4 @@ disallow_untyped_defs = false
 disallow_incomplete_defs = false
 exclude = "docs/conf\\.py"
 
-# Чтобы mypy понимал pandas 2.x
 plugins = []

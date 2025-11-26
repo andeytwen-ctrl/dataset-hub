@@ -9,4 +9,4 @@ Installation
 
 .. code-block:: bash
 
-    pip install dataset-hib
+    pip install dataset-hub
