@@ -14,11 +14,11 @@ def get_data(
         datasets.
 
     This function:
-        1. Loads the dataset configuration using ConfigFactory.
-        2. Instantiates the appropriate Provider via ProviderFactory.
-        3. Loads the dataset using the provider.
+        1. Loads the dataset configuration using :ref:`ConfigFactory`.
+        2. Instantiates the appropriate Provider via :ref:`ProviderFactory`.
+        3. Loads the dataset using :ref:`providers`.
         4. ``(optional)`` Logs a link to the dataset documentation once per session \
-            if verbose is enabled (either via argument or global settings).
+            if verbose is enabled (either via argument or :ref:`settings`).
 
     Args:
         dataset_name (str): The name of the dataset (corresponding to the \

@@ -5,6 +5,8 @@ import pandas as pd
 from dataset_hub._core.get_data import get_data
 
 task_type = "classification"
+# TODO think about **params in public functions. User dont know about this params.
+# How it solve pandas?
 
 
 def _get_data(dataset_name: str, **params) -> Union[Any, Dict[str, Any]]:

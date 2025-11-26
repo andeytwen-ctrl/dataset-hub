@@ -1,3 +1,5 @@
+.. _DeveloperAPI:
+
 ************
 Developer API
 ************
