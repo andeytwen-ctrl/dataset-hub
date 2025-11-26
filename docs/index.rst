@@ -14,5 +14,5 @@ Welcome to the Dataset Hub documentation!
    :caption: Contents:
 
    ./datasets/index
-   ./developer_api/index
+   ./dev_docs/index
 
