@@ -1,3 +1,5 @@
+.. _ProviderFactory:
+
 ************************
 `dataset_hub._core.provider <./>`_.ProviderFactory
 ************************

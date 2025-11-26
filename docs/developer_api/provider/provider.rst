@@ -1,3 +1,5 @@
+.. _Provider:
+
 ************************
 `dataset_hub._core.provider <./>`_.Provider
 ************************

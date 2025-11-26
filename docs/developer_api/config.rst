@@ -1,3 +1,5 @@
+.. _ConfigFactory:
+
 ************************
 `dataset_hub._core <./>`_.utils.ConfigFactory
 ************************
