@@ -35,7 +35,7 @@ You can take any task from DatasetHub and start exploring or modeling immediatel
 ## Installation (NOT AVAILABLE NOW)
 ```bash
 # Python 3.8+
-pip install dataset_hub
+pip install dataset-hub
 ```
 
 ## Available tasks and datasets:

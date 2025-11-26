@@ -1,4 +1,4 @@
-.. _DeveloperAPI:
+.. _dev_api:
 
 ************
 Developer API

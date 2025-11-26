@@ -6,7 +6,7 @@ from .url_provider import UrlProvider
 
 class ProviderFactory:
     """
-    Factory to build Provider instances based on a configuration dictionary.
+    Factory to build :ref:`providers` instances based on a configuration dictionary.
 
     Uses a simple strategy pattern: selects the provider class by 'type' key in config.
     """
