@@ -10,7 +10,7 @@ def get_logger(name: Optional[str] = None) -> Logger:
     """
     Get a configured logger instance for this library.
 
-    This function returns a `logging.Logger` instance with a simple console 
+    This function returns a `logging.Logger` instance with a simple console
     StreamHandler attached. The logger is configured to:
         - Output messages at the INFO level.
         - Use a clean formatter: only the message text.
@@ -34,7 +34,7 @@ def get_logger(name: Optional[str] = None) -> Logger:
     return logging.getLogger(name)
 
 
-def log_dataset_doc_doc_link():  
+def log_dataset_doc_doc_link():
     """
     Decorator used by :ref:`get_data` to log a link to the dataset documentation.
 
@@ -57,7 +57,7 @@ def log_dataset_doc_doc_link():
 
         @wraps(func)
         def wrapper(*args, **kwargs):
-            from inspect import signature # get arg values
+            from inspect import signature  # get arg values
 
             sig = signature(func)
             bound = sig.bind(*args, **kwargs)
@@ -72,8 +72,13 @@ def log_dataset_doc_doc_link():
                 settings = load_settings()
                 verbose = settings["verbose"]
             if verbose:
-                logger = get_logger(func.__module__)
-                print(func.__module__)
+                # Build logger name to match the module where get_data is actually 
+                # called via the decorator in public dataset getters 
+                # (e.g. dataset_hub.classification.get_iris()). This ensures logs
+                # appear in the correct namespace and are consistent with library
+                # structure.
+                logger_name = f"dataset_hub.{task_type}.datasets"
+                logger = get_logger(logger_name) 
                 logger.info(
                     f"Documentation: https://getdataset.github.io/dataset-hub/datasets/{task_type}/{dataset_name}.html"
                 )
