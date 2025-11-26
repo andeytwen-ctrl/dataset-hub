@@ -1,4 +1,4 @@
-.. _dev_starter:
+.. _dev_start:
 
 ************************
 Developer starter
