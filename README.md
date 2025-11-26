@@ -8,8 +8,8 @@
 .. |Docs| image:: https://img.shields.io/badge/docs-dataset?label=datasets
 .. _Docs: https://getdataset.github.io/dataset-hub/index.html
 
-# DatasetHub: A Unified API for Exploring Any ML Task
-
+DatasetHub: A Unified API for Exploring Any ML Task
+===============
 
 **DatasetHub** is an educational project that provides a simple `.get_<dataset>()` API to access datasets.
 ```python
