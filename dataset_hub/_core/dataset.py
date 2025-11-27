@@ -1,5 +1,18 @@
 from dataclasses import dataclass, field
-from typing import Any, Dict
+from typing import Dict, Protocol, runtime_checkable
+
+
+@runtime_checkable
+class DataLike(Protocol):
+    """
+    Marker protocol for data objects.
+
+    Used to indicate that an object should be treated as "data" in
+    Dataset containers and related functions. Functionally, any object
+    can be marked as DataLike.
+    """
+
+    pass
 
 
 @dataclass
@@ -7,14 +20,14 @@ class Dataset:
     """
     Immutable container for loaded dataset(s) with consistent interface.
 
-    This wrapper eliminates the Union[Any, Dict[str, Any]] type instability by
+    This wrapper eliminates the Union[DataLike, Dict[str, DataLike]] type instability by
     providing a single, predictable return type from all data loading operations.
 
     A Dataset always wraps data as a dictionary (single datasets use a default key),
     making the API consistent and type-safe.
 
     Attributes:
-        data (Dict[str, Any]): Dictionary mapping table names to data objects.
+        data (Dict[str, DataLike]): Dictionary mapping table names to data objects.
             For single-table datasets, uses the default key "data".
             For multi-table datasets, keys are defined in the config.
 
@@ -30,9 +43,9 @@ class Dataset:
             dataset.data["train"]  # First table from multi-table
     """
 
-    data: Dict[str, Any] = field(default_factory=dict)
+    data: Dict[str, DataLike] = field(default_factory=dict)
 
-    def __getitem__(self, key: str) -> Any:
+    def __getitem__(self, key: str) -> DataLike:
         """
         Convenient access to individual tables within the dataset.
 
@@ -51,7 +64,7 @@ class Dataset:
         """
         return self.data[key]
 
-    def __setitem__(self, key: str, value: Any) -> None:
+    def __setitem__(self, key: str, value: DataLike) -> None:
         self.data[key] = value
 
     def __contains__(self, key: str) -> bool:
