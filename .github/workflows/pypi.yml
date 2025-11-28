@@ -1,13 +1,14 @@
-name: Publish to PyPI
+name: Build and Publish to PyPI
 
 on:
   release:
     types: [published]
 
 jobs:
-  build:
-    name: Build and test distributions
+  build_and_publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -17,44 +18,29 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install build deps
-        run: pip install build
+      - name: Install build dependencies
+        run: pip install build twine pytest
 
       - name: Build package
         run: python -m build
 
-      - name: Remove source package directory
-        run: rm -rf dataset_hub
+      - name: Check distributions
+        run: twine check dist/*
 
-      - name: Verify installation from built wheel
+      - name: Test wheel installation
         run: |
-          pip install --force-reinstall dist/*.whl
+          mkdir install-test
+          cp dist/*.whl install-test/
+          cd install-test
+          pip install *.whl
           python -c "import dataset_hub; print('Import OK')"
 
-      - name: Run tests (optional)
+      - name: Run tests with installed package
         run: |
-          pip install pytest
-          pytest -q
+          mkdir test-run
+          cd test-run
+          pytest ../tests -q
 
-      - name: Upload dist artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist/*
-
-  publish:
-    name: Publish to PyPI
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-
-    steps:
-      - name: Download built artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@v1.8.12
         with:
