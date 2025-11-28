@@ -28,7 +28,7 @@ class UrlProviderConfig(ProviderConfig):
     read_kwargs: Dict[str, Any] = field(default_factory=dict)
 
 
-class UrlProvider(Provider):
+class UrlProvider(Provider[pd.DataFrame]):
     """
     Provider that loads a dataset from a remote URL and returns it as
     a pandas DataFrame.
