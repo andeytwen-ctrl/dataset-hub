@@ -58,11 +58,14 @@ jobs:
       
       - name: FINAL dist list
         run: ls -l dist
-        
-      - name: Return to workspace root
-        run: cd $GITHUB_WORKSPACE
-      - name: Publish to PyPI
 
-        uses: pypa/gh-action-pypi-publish@v1.8.12
-        with:
-          repository-url: https://upload.pypi.org/legacy/
+      - name: Publish to PyPI with twine
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          python -m pip install --upgrade twine
+          echo "=== running twine check ==="
+          twine check dist/*
+          echo "=== uploading to PyPI (verbose) ==="
+          twine upload --verbose dist/* || (echo "Twine upload failed"; ls -la dist; exit 1)
