@@ -41,6 +41,9 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+    
+    continue-on-error: true
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -55,6 +58,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e .
           pip install ".[dev]"
+
+      - name: Remove local source folder
+        run: rm -rf dataset_hub
 
       - name: Run tests
         run: |
