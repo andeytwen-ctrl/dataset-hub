@@ -2,7 +2,7 @@ from typing import Any, Optional
 
 from dataset_hub._core.dataset import Dataset
 from dataset_hub._core.provider import ProviderFactory
-from dataset_hub._core.utils.config import ConfigFactory
+from dataset_hub._core.utils.config import ConfigManager
 from dataset_hub._core.utils.logger import log_dataset_doc_doc_link
 
 
@@ -40,7 +40,7 @@ def get_data(
         FileNotFoundError: If the dataset configuration YAML file is not found.
         ValueError: If the provider type is unknown or misconfigured.
     """
-    config = ConfigFactory.load_config(dataset_name, task_type)
+    config = ConfigManager.load_config(dataset_name, task_type)
     provider = ProviderFactory.build_provider(config["provider"])
     data = provider.load()
 

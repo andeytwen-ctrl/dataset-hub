@@ -4,7 +4,7 @@ from typing import Any, Dict
 import yaml
 
 
-class ConfigFactory:
+class ConfigManager:
     """
     Factory to load and build dataset configurations.
 
@@ -25,8 +25,8 @@ class ConfigFactory:
         Returns:
             dict: Loaded configuration from the YAML file.
         """
-        config_path = ConfigFactory.build_config_path(dataset_name, task_type)
-        config = ConfigFactory.load_raw_config(config_path)
+        config_path = ConfigManager.build_config_path(dataset_name, task_type)
+        config = ConfigManager.load_raw_config(config_path)
         return config
 
     @staticmethod

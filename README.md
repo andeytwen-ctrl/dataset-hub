@@ -15,7 +15,7 @@ It lets beginners access datasets effortlessly, while giving practitioners a sin
 
 ## Installation
 ```bash
-# Python 3.10+
+# Python 3.9+
 pip install dataset-hub
 ```
 
