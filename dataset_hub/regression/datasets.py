@@ -2,7 +2,7 @@ from typing import Optional
 
 import pandas as pd
 
-from dataset_hub._core.dataset import Dataset
+from dataset_hub._core.dataset import DataBundle
 from dataset_hub._core.get_data import get_data as _get_data
 
 task_type = "regression"
@@ -23,7 +23,7 @@ def get_housing(verbose: Optional[bool] = None) -> pd.DataFrame:
     teaching people about the basics of machine learning.
 
     """
-    dataset: Dataset[pd.DataFrame] = _get_data(
+    dataset: DataBundle[pd.DataFrame] = _get_data(
         dataset_name="california_housing", task_type=task_type, verbose=verbose
     )
     return dataset["data"]

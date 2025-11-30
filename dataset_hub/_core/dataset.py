@@ -1,16 +1,16 @@
 from dataclasses import dataclass, field
 from typing import Dict, Generic, ItemsView, KeysView, TypeVar
 
-DataLikeT = TypeVar("DataLikeT")
+UserDataT = TypeVar("UserDataT")
 """
-Type variable representing the data stored inside a Dataset.
+Type variable representing the data stored inside a DataBundle.
 In real cases it may be e.x. pd.DataFrame, tf.Dataset, 
 networX.Graph, etc..
 """
 
 
 @dataclass
-class Dataset(Generic[DataLikeT]):
+class DataBundle(Generic[UserDataT]):
     """
     Generic dataset container.
 
@@ -18,23 +18,23 @@ class Dataset(Generic[DataLikeT]):
         DataT: The type of each data object stored under names.
 
     Attributes:
-        data (Dict[str, DataLikeT]): Dictionary mapping table names to data objects
+        data (Dict[str, UserDataT]): Dictionary mapping table names to data objects
 
     Example:
         Creating:
-            from dataset_hub._core.dataset import Dataset
+            from dataset_hub._core.dataset import DataBundle
             import pandas as pd
             df = pd.DataFrame({"a":[1]})
-            dataset: Dataset[pd.DataFrame] = Dataset()
+            dataset: DataBundle[pd.DataFrame] = DataBundle()
             dataset["data"] = df
 
         Access:
             df = dataset.data["data"]
     """
 
-    data: Dict[str, DataLikeT] = field(default_factory=dict)
+    data: Dict[str, UserDataT] = field(default_factory=dict)
 
-    def __getitem__(self, key: str) -> DataLikeT:
+    def __getitem__(self, key: str) -> UserDataT:
         """
         Convenient access to individual tables within the dataset.
 
@@ -53,7 +53,7 @@ class Dataset(Generic[DataLikeT]):
         """
         return self.data[key]
 
-    def __setitem__(self, key: str, value: DataLikeT) -> None:
+    def __setitem__(self, key: str, value: UserDataT) -> None:
         self.data[key] = value
 
     def __contains__(self, key: str) -> bool:
@@ -64,7 +64,7 @@ class Dataset(Generic[DataLikeT]):
         """Get all table names in this dataset."""
         return self.data.keys()
 
-    def items(self) -> ItemsView[str, DataLikeT]:
+    def items(self) -> ItemsView[str, UserDataT]:
         """Iterate over (table_name, data) pairs."""
         return self.data.items()
 
@@ -75,4 +75,4 @@ class Dataset(Generic[DataLikeT]):
     def __repr__(self) -> str:
         """Return a clear representation of the dataset structure."""
         tables = ", ".join(self.data.keys())
-        return f"Dataset(tables=[{tables}])"
+        return f"DataBundle(tables=[{tables}])"
