@@ -1,16 +1,16 @@
 from abc import ABC, abstractmethod
-from dataclasses import asdict, dataclass
-from typing import Any, Dict, Generic, Type, TypeVar
-from .buffer import BufferT
 
+from .buffer import Buffer
 
 
 class SourceLoader(ABC):
-
-    def __init__(self, config: Dict[str, Any]) -> None:
-        pass
+    """Base class for loading data sources into buffers."""
 
     @abstractmethod
-    def load(self) -> BufferT:
-        pass
+    def load(self) -> Buffer:
+        """Load data from source and return as buffer.
 
+        Returns:
+            Buffer: The loaded buffer data.
+        """
+        pass
