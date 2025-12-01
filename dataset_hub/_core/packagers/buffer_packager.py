@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
-from dataclasses import asdict, dataclass
-from typing import Any, Dict, Generic, Type, TypeVar
+from typing import Dict, Generic, TypeVar
 
+from dataset_hub._core.loaders.buffer import Buffer
 
 BufferPackT = TypeVar("BufferPackT")
 
@@ -9,5 +9,5 @@ BufferPackT = TypeVar("BufferPackT")
 class BufferPackager(ABC, Generic[BufferPackT]):
 
     @abstractmethod
-    def package(self, buffers: Dict[str, bytes]) -> BufferPackT:
+    def package(self, buffers: Dict[str, Buffer]) -> None:
         pass

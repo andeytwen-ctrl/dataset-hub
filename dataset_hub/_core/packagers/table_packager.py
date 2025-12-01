@@ -1,14 +1,17 @@
+from typing import Dict
+
+from dataset_hub._core.loaders.buffer import Buffer
+
 from .buffer_packager import BufferPackager
-from typing import Optional, Dict
+
 
 class TableBufferPack:
-    
-    def __init__(self, data: bytes):
-        self.data = data
+
+    def __init__(self, buffers: Dict[str, Buffer]):
+        self.data = buffers
+
 
 class TableBufferPackager(BufferPackager[TableBufferPack]):
 
-    def package(self, buffers: Dict[str, bytes]) -> TableBufferPack:
-        return TableBufferPack(
-            data=buffers.get("data"),
-        )
+    def package(self, buffers: Dict[str, Buffer]) -> None:
+        pass
