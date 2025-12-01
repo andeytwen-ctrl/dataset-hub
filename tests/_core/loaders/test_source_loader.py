@@ -26,7 +26,7 @@ class TestSourceLoader:
     def test_source_loader_concrete_implementation(self) -> None:
         """Concrete subclass with load() method instantiates properly."""
 
-        class ConcreteLoader(SourceLoader[Buffer]):
+        class ConcreteLoader(SourceLoader):
             def load(self) -> Buffer:
                 return Buffer(name="test", data=b"test_data")
 
