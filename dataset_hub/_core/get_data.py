@@ -1,15 +1,15 @@
 from typing import Any, Optional
 
-from dataset_hub._core.dataset import Dataset
+from dataset_hub._core.config_manager import ConfigManager
+from dataset_hub._core.data_bundle import DataBundle
 from dataset_hub._core.provider import ProviderFactory
-from dataset_hub._core.utils.config import ConfigFactory
 from dataset_hub._core.utils.logger import log_dataset_doc_doc_link
 
 
 @log_dataset_doc_doc_link()
 def get_data(
     dataset_name: str, task_type: str, verbose: Optional[bool]
-) -> Dataset[Any]:
+) -> DataBundle[Any]:
     """
     Core backend function used by all `.get_<dataset_name>()` functions to load \
         datasets.
@@ -29,7 +29,7 @@ def get_data(
             documentation link. If None, the global library setting is used.
 
     Returns:
-        Dataset: A consistent wrapper containing the loaded data.
+        DataBundle: A consistent wrapper containing the loaded data.
 
         Example::
 
@@ -40,8 +40,8 @@ def get_data(
         FileNotFoundError: If the dataset configuration YAML file is not found.
         ValueError: If the provider type is unknown or misconfigured.
     """
-    config = ConfigFactory.load_config(dataset_name, task_type)
+    config = ConfigManager.load_config(dataset_name, task_type)
     provider = ProviderFactory.build_provider(config["provider"])
     data = provider.load()
 
-    return Dataset({"data": data})
+    return DataBundle({"data": data})

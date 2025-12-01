@@ -29,7 +29,8 @@ dev = [
     "sphinx-rtd-theme==1.0.0",
     "myst-parser",
     "sphinxcontrib-bibtex",
-    "pytest"
+    "pytest",
+    "types-requests"
 ]
 
 # -----------------------------
@@ -66,7 +67,7 @@ disallow_incomplete_defs = true
 no_implicit_optional = true
 disallow_subclassing_any = true
 
-exclude = "docs/conf\\.py"
+exclude = "(^tests/|docs/conf\\.py$)"
 
 plugins = []
 
