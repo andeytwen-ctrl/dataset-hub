@@ -1,6 +1,9 @@
 from abc import ABC, abstractmethod
 from dataclasses import asdict, dataclass
-from typing import Any, Dict, Generic, Type
+from typing import Any, Dict, Generic, Type, TypeVar
+from .buffer import BufferT
+
+
 
 class SourceLoader(ABC):
 
@@ -8,6 +11,6 @@ class SourceLoader(ABC):
         pass
 
     @abstractmethod
-    def load(self) -> bytes:
+    def load(self) -> BufferT:
         pass
 
