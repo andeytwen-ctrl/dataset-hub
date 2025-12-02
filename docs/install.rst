@@ -3,10 +3,11 @@ Installation
 *************
 
 .. _PyPI: 
-.. _source: https://github.com/GetDataset/dataset-hub
+.. _source: https://pypi.org/project/dataset-hub/
 
 **Install** the package by the following command from PyPI_:
 
 .. code-block:: bash
-
+    
+    # Python 3.9+
     pip install dataset-hub
