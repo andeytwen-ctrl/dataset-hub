@@ -35,10 +35,13 @@ For example, here is a simple baseline for :ref:`titanic`:
 
 .. code-block:: python
 
-    import pandas as pd
     from sklearn.model_selection import train_test_split
     from sklearn.linear_model import LogisticRegression
     from sklearn.metrics import accuracy_score
+    from dataset_hub.classification import get_titanic
+
+    # Get titanic dataset
+    dataset = get_titanic()
 
     # Separate target variable (y) and features (X)
     y = dataset["survived"]
