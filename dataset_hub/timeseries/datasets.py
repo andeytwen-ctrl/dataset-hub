@@ -12,13 +12,15 @@ def get_household_power(verbose: Optional[bool] = None) -> pd.DataFrame:
     """
     Load and return the Individual Household Electric Power Consumption dataset.
 
-    Measurements of electric power consumption in a single household with a one-minute \
-        sampling rate over a period of almost 4 years (December 2006 – November 2010). 
+    Measurements of **electric power consumption in a single household** with a one-minute \
+        sampling rate over a period of almost 4 years (December 2006 – November 2010). \
+        Each record contains several electrical and sub-metering measurements.
+     
+    
     This dataset is designed for minute-level analysis of total household energy \
         consumption, capturing overall usage patterns of a single home.
 
-    Each record contains several electrical and sub-metering measurements.
-    
+
     Original dataset: This dataset is available on the UCI Machine Learning \
         Repository:  
     `Individual Household Electric Power Consumption <https://archive.ics.uci.edu/dataset/235/individual+household+electric+power+consumption>`_
@@ -66,10 +68,77 @@ def get_household_power(verbose: Optional[bool] = None) -> pd.DataFrame:
 
     Baseline:
 
+    .. note::
+
+        You need to install the following packages before running this baseline:
+
+        .. code-block:: bash
+        
+            pip install prophet 
+            pip install matplotlib
+
     .. code-block:: python
 
+        import pandas as pd
+        from prophet import Prophet
+        from dataset_hub.timeseries import get_household_power
+        import numpy as np
+        import matplotlib.pyplot as plt
 
-    """
+        # Load dataset
+        household_power = get_household_power()
+
+        # Combine Date and Time into datetime
+        household_power["datetime"] = pd.to_datetime(household_power["Date"] + " " + household_power["Time"], dayfirst=True)
+        household_power = household_power.drop(["Date", "Time"], axis=1)
+
+        # Aggregate to monthly mean
+        monthly_power = household_power.resample("ME", on="datetime").mean().reset_index()
+
+        # Prepare data for Prophet
+        df_prophet = monthly_power[["datetime", "Global_active_power"]].rename(columns={"datetime": "ds", "Global_active_power": "y"})
+        df_prophet["y"] = df_prophet["y"].ffill()
+
+        # Drop incomplete last month
+        df_prophet = df_prophet.iloc[:-1]
+
+        # Split: train on all except last full month
+        train_df = df_prophet.iloc[:-1]
+        test_df = df_prophet.iloc[-1:]
+
+        # ========================
+        # Part 1: Monthly forecast
+        # ========================
+        model = Prophet(daily_seasonality=False, yearly_seasonality=True)
+        model.fit(train_df)
+
+        # Create future dataframe for next month
+        future = model.make_future_dataframe(periods=1, freq='ME')
+        forecast = model.predict(future)
+
+        # Plot monthly forecast
+        fig1 = model.plot(forecast)
+        plt.title("Prophet monthly forecast of Global Active Power for next month")
+        plt.show()
+
+        # Plot components (trend, yearly seasonality)
+        fig2 = model.plot_components(forecast)
+        plt.show()
+
+        # =================================
+        # Part 2: Next month forecast error
+        # =================================
+        # Predicted and actual for the last month
+        pred_total = forecast.iloc[-1]["yhat"]
+        actual_total = test_df["y"].values[0]
+
+        # Compute percentage error
+        mape = np.abs((actual_total - pred_total) / actual_total) * 100
+
+        # Note: This is NOT a classical MAPE or robust model evaluation.
+        # We are showing the percentage error on a single month forecast as an illustrative example only.
+        print(f"Percentage error for next month forecast: {mape:.2f}%") # 7.58%
+    """  # noqa: E501
 
     dataset: DataBundle[pd.DataFrame] = _get_data(
         dataset_name="household_power", task_type=task_type, verbose=verbose
