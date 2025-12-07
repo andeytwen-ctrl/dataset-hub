@@ -1,0 +1,12 @@
+dataset_parts:
+  - name: household_power
+    pack_type: table
+    as_type: pd.DataFrame
+    source:
+      type: url
+      url: https://archive.ics.uci.edu/static/public/235/individual+household+electric+power+consumption.zip
+      format: csv
+    read_kwargs:
+      sep: ";"
+      low_memory: False
+      na_values: ['nan','?']
