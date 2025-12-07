@@ -21,6 +21,9 @@
 - [ ] Add link on it into `docs/datasets/<domain>/index.rst` file
 - [ ] Add heading and autofunction link into `docs/datasets/<domain>/<dataset_name>.rst`. 
 
+### Add dataset test
+- [ ] Add new function into `AVAILABILITY_DATAFRAME_DATASETS` var(or another a similar one) in `tests/availability/test_datasets.py`
+
 ### Add documentation
 - [ ] Add docstring for function by analogy with others functions. Don't forget about:
     - [ ] Small desrtiption
