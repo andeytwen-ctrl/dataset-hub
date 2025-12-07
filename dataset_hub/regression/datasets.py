@@ -13,11 +13,16 @@ def get_housing(verbose: Optional[bool] = None) -> pd.DataFrame:
     Load and return the California Housing dataset (regression).
 
     Median house prices for California districts derived from the 1990 census.
-    This dataset was used in Aurélien Géron's book
-    'Hands-On Machine Learning with Scikit-Learn and TensorFlow'. 
-    It is a great dataset for learning regression and basic preprocessing.
 
-    Original dataset: `California Housing on Kaggle <https://www.kaggle.com/camnugent/california-housing-prices>`_
+    This dataset is intended for **predicting median housing values at the block \
+        level**, reflecting broader economic and social patterns rather than \
+        individual home prices. Each record summarizes features of a block, such \
+        as population, total rooms, and median income, making it suitable for \
+        regional-level regression tasks.
+    
+    Original dataset: This dataset was used in Aurélien Géron's book \
+        'Hands-On Machine Learning with Scikit-Learn and TensorFlow'. \
+        `California Housing on Kaggle <https://www.kaggle.com/camnugent/california-housing-prices>`_
 
     Columns:
 

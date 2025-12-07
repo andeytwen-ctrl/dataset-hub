@@ -1,7 +1,7 @@
 .. _timeseries:
 
 ************************
-Timeseries Datasets
+Timeseries
 ************************
 
 This page documents the available time series datasets.
