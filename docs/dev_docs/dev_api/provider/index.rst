@@ -1,8 +1,8 @@
 .. _providers:
 
-************************
+*************************************
 `dataset_hub._core <../>`_.provider
-************************
+*************************************
 
 
 
@@ -11,5 +11,5 @@
 
    ./provider
    ./provider_factory
-   ./url_provider
+   ./dataframe_provider
 

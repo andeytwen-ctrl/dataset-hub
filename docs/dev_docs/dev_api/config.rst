@@ -1,10 +1,10 @@
-.. _ConfigFactory:
+.. _ConfigManager:
 
-************************
-`dataset_hub._core <./>`_.utils.ConfigFactory
-************************
+***********************************************
+`dataset_hub._core <./>`_.utils.ConfigManager
+***********************************************
 
-.. autoclass:: dataset_hub._core.utils.config.ConfigFactory
+.. autoclass:: dataset_hub._core.config_manager.ConfigManager
    :members:
    :undoc-members:
    :show-inheritance:
