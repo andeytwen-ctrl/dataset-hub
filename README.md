@@ -44,16 +44,23 @@ Each dataset includes a detailed documentation page with metadata, columns, sour
 ### Time Series
 - **Household Electric Power Consumption**  
   [Documentation](https://getdataset.github.io/dataset-hub/datasets/timeseries/household_power.html)
+  
+---
+
+💡 **Have ideas for new datasets or features?**  
+Join the discussion and tell us what to build next:  
+[What should we build next?](https://github.com/GetDataset/dataset-hub/discussions/63)
 
 
 ## Why this library exists
-DatasetHub was created to provide a single, unified entry point for experimenting with any classic ML task — from scoring and forecasting to fraud detection and uplift modeling.
 
-Looking ahead, the project focuses on two major directions:
+Every time I wanted to try a new ML task from scratch, I faced a chain of steps:  
+search for a suitable dataset → download it → load it into Python → write a baseline.  
 
-1. **Assemble a large collection of open datasets** for a variety of classic ML tasks, all easily accessible through the unified `.get_<dataset>()` interface.
+Some of these steps were surprisingly complex, and sometimes I just gave up.  
+The challenge became even bigger when exploring new ML domains. Take graph ML, for example — honestly, I had no idea where to begin.
 
-2. **Provide realistic, ready-to-use synthetic datasets** that mimic real-world business scenarios, enabling experimentation for niche tasks where open data is scarce.
+I created DatasetHub to solve this problem: it gives a **unified, easy-to-use interface** to access datasets, each with a ready-to-run baseline so you can start experimenting immediately.
 
 ## API Disclaimer
 
