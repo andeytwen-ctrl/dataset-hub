@@ -80,4 +80,5 @@ Or jump directly to the quick examples:
 - :ref:`titanic`
 - :ref:`iris`
 - :ref:`california_housing`
+- :ref:`household_power`
 
