@@ -13,8 +13,8 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.mathjax",
     "sphinx.ext.napoleon",
-    "myst_parser",
     "sphinx.ext.intersphinx",
+    "myst_nb",
 ]
 
 templates_path = ["_templates"]
@@ -30,7 +30,6 @@ html_css_files = [
 
 html_favicon = "_static/favicon.png"
 
-# Настройки автодокументации
 autodoc_member_order = "bysource"
 autodoc_typehints = "description"
 
@@ -39,3 +38,6 @@ autodoc_default_options = {
     "undoc-members": False,
 }
 autosummary_generate = False
+
+nb_execution_mode = "force" 
+nb_execution_timeout = 120

@@ -1,8 +1,8 @@
 .. _quick_start:
 
-**********
+**************
 Quick Start
-**********
+**************
 
 
 This section shows how to load your first dataset using the unified

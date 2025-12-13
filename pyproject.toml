@@ -30,7 +30,8 @@ dev = [
     "myst-parser",
     "sphinxcontrib-bibtex",
     "pytest",
-    "types-requests"
+    "types-requests",
+    "myst-nb"
 ]
 
 # -----------------------------
@@ -73,3 +74,8 @@ plugins = []
 
 [tool.setuptools.package-data]
 "dataset_hub" = ["**/*.yaml"]
+
+
+[tool.setuptools.packages.find]
+include = ["dataset_hub"]
+exclude = ["notebooks*", "docs*", "local_tests*", "jupyter_execute*"]
