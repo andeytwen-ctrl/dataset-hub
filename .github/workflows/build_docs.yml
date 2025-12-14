@@ -1,0 +1,43 @@
+name: Build Docs
+
+on:
+  workflow_call:
+
+jobs:
+  build_docs:
+    name: Build and Deploy Sphinx Docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install base tooling
+        run: |
+          pip install -U pip
+          pip install build
+
+      - name: Build wheel
+        run: python -m build --wheel
+
+      - name: Install package from wheel
+        run: pip install dist/*.whl
+
+      - name: Install doc dependencies
+        run: pip install ".[dev]"
+
+      - name: Build docs
+        run: sphinx-build -b html docs/ _build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _build
+          publish_branch: gh-pages
+          force_orphan: true
