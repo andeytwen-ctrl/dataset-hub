@@ -86,7 +86,7 @@ jobs:
   build_docs:
     name: Build and Deploy Sphinx Docs
     runs-on: ubuntu-latest
-    needs: build_and_publish
+    needs: ${{ (github.event_name == 'release' || github.event.inputs.mode == 'release') && 'build_and_publish' || '' }}
     if: github.event_name == 'release' || github.event.inputs.mode == 'docs' || github.event.inputs.mode == 'release'
 
 
