@@ -5,3 +5,11 @@
 .wy-breadcrumbs {
     font-size: 14px;
 }
+
+div.nboutput .dataframe,
+div.cell_output .dataframe,
+div.output_area .dataframe {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+}
