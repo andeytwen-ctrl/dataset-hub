@@ -31,7 +31,9 @@ jobs:
         run: pip install dist/*.whl
 
       - name: Install doc dependencies
-        run: pip install ".[docs]"
+        run: |
+          pip install ".[docs]"
+          pip install --upgrade docutils
 
       - name: Build docs
         run: sphinx-build -b html docs/ _build
