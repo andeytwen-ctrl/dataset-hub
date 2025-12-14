@@ -25,13 +25,18 @@ dev = [
     "mypy",
     "pandas-stubs",
     "types-PyYAML",
+    "pytest",
+    "types-requests",
+]
+docs = [
     "sphinx==5.1.1",
     "sphinx-rtd-theme==1.0.0",
     "myst-parser",
     "sphinxcontrib-bibtex",
-    "pytest",
-    "types-requests",
-    "myst-nb"
+    "myst-nb",
+    "scikit-learn",
+    "prophet",
+    "matplotlib",
 ]
 
 # -----------------------------
