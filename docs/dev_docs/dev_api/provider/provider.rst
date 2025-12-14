@@ -1,8 +1,8 @@
 .. _Provider:
 
-************************
+**********************************************
 `dataset_hub._core.provider <./>`_.Provider
-************************
+**********************************************
 
 .. autoclass:: dataset_hub._core.provider.provider.Provider
    :members:
