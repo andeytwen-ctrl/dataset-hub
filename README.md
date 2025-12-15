@@ -4,9 +4,9 @@
 # DatasetHub: Instant ML datasets with Baselines
 
 ```python
-import dataset_hub
+from dataset_hub.classification import get_titanic
 
-housing = dataset_hub.regression.get_housing() # pd.DataFrame
+titanic = get_titanic() # pd.DataFrame
 ```
 
 ## Installation
