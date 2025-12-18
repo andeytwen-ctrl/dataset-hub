@@ -1,6 +1,6 @@
 .. |colab_button| image:: https://colab.research.google.com/assets/colab-badge.svg
    :alt: Open In Colab
-   :target: https://colab.research.google.com/github/GetDataset/dataset-hub/blob/main/notebooks/classification/titanic.ipynb
+   :target: https://colab.research.google.com/github/GetDataset/dataset-hub/blob/main/notebooks/quick_start/classification/titanic.ipynb
 .. _titanic:
 
 *******
