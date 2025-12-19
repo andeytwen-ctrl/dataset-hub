@@ -14,5 +14,5 @@ Baseline
 ========
 |colab_button|
 
-.. include:: ../../../notebooks/classification/titanic.ipynb
+.. include:: ../../../notebooks/quick_start/classification/titanic.ipynb
    :parser: myst_nb.docutils_

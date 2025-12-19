@@ -14,5 +14,5 @@ Baseline
 ========
 |colab_button|
 
-.. include:: ../../../notebooks/timeseries/household_power.ipynb
+.. include:: ../../../notebooks/quick_start/timeseries/household_power.ipynb
    :parser: myst_nb.docutils_

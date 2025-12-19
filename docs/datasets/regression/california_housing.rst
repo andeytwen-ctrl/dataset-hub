@@ -14,5 +14,5 @@ Baseline
 ========
 |colab_button|
 
-.. include:: ../../../notebooks/regression/california_housing.ipynb
+.. include:: ../../../notebooks/quick_start/regression/california_housing.ipynb
    :parser: myst_nb.docutils_
