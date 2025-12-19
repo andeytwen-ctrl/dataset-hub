@@ -14,5 +14,5 @@ Baseline
 ========
 |colab_button|
 
-.. include:: ../../../notebooks/classification/iris.ipynb
+.. include:: ../../../notebooks/quick_start/classification/iris.ipynb
    :parser: myst_nb.docutils_

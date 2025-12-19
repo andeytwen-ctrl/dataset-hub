@@ -6,7 +6,7 @@
 ```python
 from dataset_hub.classification import get_titanic
 
-titanic = get_titanic() # pd.DataFrame
+df = get_titanic() # pd.DataFrame
 ```
 
 ## Installation
