@@ -1,11 +1,11 @@
 .. _dev_docs:
 
-************************
-Developer Guide
-************************
+******************
+Developer's Guide
+******************
 
 .. toctree::
    :maxdepth: 1
 
-   ./starter
+   ./env
    ./dev_api/index
