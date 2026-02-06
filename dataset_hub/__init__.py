@@ -1,4 +1,4 @@
-from . import classification, regression, timeseries, nip
+from . import classification, regression, timeseries, nlp
 from ._core.data_bundle import DataBundle
 from ._core.settings.user_settings import set_option
 
